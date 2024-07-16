@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaigns Bar Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Campaigns Bar Graph</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        // Pass the campaigns data from Flask as a JSON string
+        const campaignsData = JSON.parse(`{{ data|tojson|safe }}`);
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const campaigns = campaignsData;
+            const labels = campaigns.map(c => c.name);
+            const startDates = campaigns.map(c => new Date(c.start_date).getTime());
+            const endDates = campaigns.map(c => new Date(c.end_date).getTime());
+            const durations = endDates.map((endDate, index) => (endDate - startDates[index]) / (1000 * 60 * 60 * 24)); // in days
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Duration (days)',
+                        data: durations,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Duration (days)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Campaigns'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

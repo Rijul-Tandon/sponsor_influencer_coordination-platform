@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sponsor Registration</title>
+    <style>
+        body {
+            background-color: lightgray;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: lightgray;
+            height: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <form name="sponsor" action="/sponsor_post" method="post">
+                <div class="form-group">
+                    <label for="sponsor_id">sponsor_id</label>
+                    <input type="number" id="sponsor_id" name="sponsor_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="Company_name">Company_name</label>
+                    <input type="text" id="Company_name" name="Company_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Industry">Industry</label>
+                    <input type="text" id="Industry" name="Industry" required>
+                </div>
+                <div class="form-group">
+                    <label for="Budget">Budget</label>
+                    <input type="text" id="Budget" name="Budget" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="state">
+                        <option>Choose...</option>
+                        <option>State 1</option>
+                        <option>State 2</option>
+                        <option>State 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Agree to terms and conditions</label>
+                </div>
+                <button type="submit" class="btn">Submit form</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

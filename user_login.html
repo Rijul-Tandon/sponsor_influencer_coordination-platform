@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            font-family: "Roboto", sans-serif;
+            font-style: normal;
+            margin: none;
+        }
+
+        body {
+            background-image: linear-gradient(to bottom right, #2E3192, #1BFFFF);
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            /* Light grey background color */
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+        }
+
+        select {
+            font-size: 20px;
+        }
+
+        .container {
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container2 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            /* White background for form container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333333;
+            /* Dark grey text color */
+            margin-bottom: 20px;
+        }
+
+        .login-container label {
+            color: #333333;
+            /* Dark grey text color */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        .login-container input[type="submit"] {
+            background-color: #2E3192;
+            /* Green background for submit button */
+            color: white;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #2E3192;
+            /* Darker green on hover */
+        }
+
+        button {
+
+            font-size: 20px;
+            margin: 10px;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #2E3192;
+            /* Green background for submit button */
+            color: white;
+        }
+
+        button:hover {
+            background-color: #2E3192;
+
+        }
+
+        .bottom {
+
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        #role {
+            margin: none;
+            border: none;
+
+        }
+
+        .buttonn {
+            border: none;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="login-container">
+            <form id="loginForm" onsubmit="RedirectToDashboard(event)">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required />
+
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6" />
+                <div id="passwordError" class="error"></div>
+                <select id="role" style="margin: 10px">
+                    <option>Admin</option>
+                    <option>sponsor</option>
+                    <option>influencer</option>
+                </select>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+    <div class="bottom">
+        <div>
+            <h3>--or register with--</h3>
+        </div>
+
+        <div style="
+        width: 350px; height: 100px;">
+            <div class="container2">
+                <button class="buttonn" type="button" onclick="redirectTosponsor()">
+                    Sponsor registeration
+                </button>
+                <button class="buttonn" type="button" onclick="redirectToinfluencer()">
+                    influencer registeration
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function redirectToinfluencer() {
+            window.location.href = "{{url_for('influencer_registeration')}}";
+        }
+        function redirectTosponsor() {
+            window.location.href = "{{url_for('sponsor_registeration')}}";
+        }
+        function RedirectToDashboard(event) {
+            event.preventDefault();
+            var a = document.getElementById("role").value;
+            var username = document.getElementById('username').value;
+            if (a == "Admin") {
+                window.location.href = '/Admin_dashboard/' + username;
+            } else if (a == "sponsor") {
+                window.location.href = '/sponsor_dashboard/' + username;
+            } else {
+                window.location.href = '/influencer_dashboard/' + username;
+            }
+        }
+    </script>
+</body>
+
+</html>

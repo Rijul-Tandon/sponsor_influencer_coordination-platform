@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+
+<head>
+    <title>Influencer Registration</title>
+    <style>
+        body {
+            background-color: lightgray;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: lightgray;
+            height: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <form name="influencer" action="influencer_post" method="post">
+                <div class="form-group">
+                    <label for="influencer_id">influencer_id</label>
+                    <input type="number" id="influencer_id" name="influencer_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" name="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    <input type="text" id="Category" name="Category" required>
+                </div>
+                <div class="form-group">
+                    <label for="Niche">Niche</label>
+                    <input type="text" id="Niche" name="Niche" required>
+                </div>
+                <div class="form-group">
+                    <label for="Followers">Reach</label>
+                    <input type="text" id="Reach" name="Reach">
+                </div>
+                <div class="form-group">
+                    <label for="platform">Platform Preference</label>
+                    <select id="platform">
+                        <option>Instagram</option>
+                        <option>facebook</option>
+                        <option>youtube</option>
+                        <option>Whatsapp</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Agree to terms and conditions</label>
+                </div>
+                <button type="submit" class="btn">Submit form</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
